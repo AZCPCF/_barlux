@@ -1,0 +1,191 @@
+[
+  {
+    "address": {
+      "default": {
+        "provinces": ["required", "string", "max:30"],
+        "city": ["required", "string", "max:30"],
+        "description": ["required", "string", "max:2500"]
+      },
+      "update": {
+        "provinces": ["string", "max:30"],
+        "city": ["string", "max:30"],
+        "description": ["string", "max:2500"]
+      },
+      "getQuery": {
+        "user_id": ["integer"]
+      }
+    }
+  },
+  {
+    "loginAdmin": {
+      "name": ["required", "string", "max:100"],
+      "password": ["required", "string", "min:8", "max:30"]
+    }
+  },
+  {
+    "Cart": {
+      "default": {
+        "product_id": ["required", "integer"],
+        "quantity": ["required", "integer"]
+      },
+      "applyDiscount": {
+        "discount_code": ["required", "string", "min:8", "max:8"]
+      },
+      "submitOrder": {
+        "payment_type": ["required", "string"],
+        "address_id": ["required", "integer"]
+      },
+      "getOrderQuery": {
+        "status": ["string"],
+        "from_submitted_at": ["date_format:Y-m-d"],
+        "to_submitted_at": ["date_format:Y-m-d"]
+      },
+      "updateOrder": {
+        "status": ["required", "string"]
+      }
+    }
+  },
+  {
+    "Category": {
+      "default": {
+        "title": ["required", "string", "max:100"],
+        "parent_id": ["numeric"]
+      },
+      "update": {
+        "title": ["required", "string", "max:100"],
+        "parent_id": ["numeric"]
+      },
+      "getQuery": {
+        "parent_id": ["numeric"],
+        "is_main": ["boolean"]
+      }
+    }
+  },
+  {
+    "ContactUs": {
+      "full_name": ["required", "string", "max:100"],
+      "email": ["required", "string", "max:100"],
+      "message": ["required", "string", "max:1000"],
+      "phone_number": ["required", "string", "max:11"]
+    }
+  },
+  {
+    "Discount": {
+      "discount_percent": ["required", "integer"],
+      "max_amount": ["integer"],
+      "expired_at": ["required", "date_format:Y-m-d"]
+    }
+  },
+  {
+    "News": {
+      "default": {
+        "title": ["required", "string", "max:100"],
+        "text": ["required", "string", "max:2500"],
+        "is_important": ["boolean"],
+        "image": ["required", "file", "mimes:jpg,png,jpeg,svg", "max:4000"]
+      },
+      "update": {
+        "title": ["string", "max:100"],
+        "text": ["string", "max:2500"],
+        "is_important": ["boolean"],
+        "image": ["file", "mimes:jpg,png,jpeg,svg", "max:4000"]
+      },
+      "getQuery": {
+        "is_important": ["boolean"]
+      }
+    }
+  },
+  {
+    "Products": {
+      "default": {
+        "title": ["required", "string", "max:100"],
+        "description": ["string", "max:2500"],
+        "features": ["string", "max:2500"],
+        "image_1": ["required", "file", "mimes:jpg,svg,jpeg,png", "max:6000"],
+        "image_2": ["file", "mimes:jpg,svg,jpeg,png", "max:6000"],
+        "image_3": ["file", "mimes:jpg,svg,jpeg,png", "max:6000"],
+        "subcategory_id": ["required", "integer"],
+        "show_in_home_page": ["boolean"],
+        "stock": ["integer"],
+        "price": ["string", "max:13"],
+        "before_discount_price": ["string", "max:13"],
+        "casts": {
+          "image_1": ["file"],
+          "image_2": ["file"],
+          "image_3": ["file"]
+        }
+      },
+      "update": {
+        "title": ["string", "max:100"],
+        "description": ["string", "max:2500"],
+        "features": ["string", "max:2500"],
+        "image_1": ["file", "mimes:jpg,svg,jpeg,png", "max:6000"],
+        "image_2": ["file", "mimes:jpg,svg,jpeg,png", "max:6000"],
+        "image_3": ["file", "mimes:jpg,svg,jpeg,png", "max:6000"],
+        "subcategory_id": ["integer"],
+        "show_in_home_page": ["boolean"],
+        "stock": ["integer"],
+        "price": ["string", "max:13"],
+        "before_discount_price": ["string", "max:13"],
+        "discount_percent": ["integer"]
+      },
+      "getQuery": {
+        "search": ["string"],
+        "subcategory_id": ["integer"],
+        "category_id": ["integer"],
+        "orderBy": ["string"]
+      }
+    }
+  },
+  {
+    "Users": {
+      "signUp": {
+        "name": ["required", "string", "max:100"],
+        "password": ["required", "string", "min:8"],
+        "email": ["required", "string", "email", "unique:users"]
+      },
+      "login": {
+        "email": ["required", "string", "max:100"],
+        "password": ["required", "string", "min:8"]
+      },
+      "update": {
+        "name": ["string", "max:100"],
+        "email": ["string", "email", "unique:users"],
+        "phone_number": ["string", "digits:11"]
+      },
+      "getOtp": {
+        "email": ["required", "string", "email"]
+      },
+      "verifyOtp": {
+        "email": ["required", "string", "email"],
+        "otp": ["required", "string", "digits:6"]
+      },
+      "changePassword": {
+        "current_password": ["sometimes", "required", "string", "min:8"],
+        "new_password": ["required", "string", "min:8"]
+      },
+      "getQuery": {
+        "search": "string"
+      },
+      "updateUser": {
+        "name": ["string", "max:100"],
+        "password": ["string", "min:8"],
+        "email": ["string", "email", "unique:users"],
+        "phone_number": ["string", "digits:11"]
+      }
+    }
+  },
+  {
+    "Wallet": {
+      "default": {
+        "amount": ["required", "integer"],
+        "user_id": ["required", "integer"],
+        "action": ["required", "string"]
+      },
+      "getQuery": {
+        "user_id": ["integer"],
+        "from_created_at": ["date_format:Y-m-d"]
+      }
+    }
+  }
+]

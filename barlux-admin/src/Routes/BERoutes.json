@@ -1,0 +1,80 @@
+{
+  "user": {
+    "post": [
+      "/user/signup",
+      "/user/login",
+      "/user/forgot_password",
+      "/user/forgot_password/verify",
+      "/user/change_password",
+      "/cart",
+      "cart/{id}",
+      "applyDiscount",
+      "cart/submit",
+      "order",
+      "order/{id}"
+    ],
+    "get": ["/user", "user/address", "user/address/{id}"],
+    "put": ["/user", "user/address/{id}"],
+    "delete": ["user/address/{id}", "cart/{id}"]
+  },
+  "admin": {
+    "post": ["/admin/login"],
+    "adminAuth": {
+      "post": [
+        "/category",
+        "/product",
+        "/wallet",
+        "/discount",
+        "/news",
+        "/aboutUs",
+        "/contactUs/content"
+      ],
+      "put": [
+        "/category/{id}",
+        "/product/{id}",
+        "/admins/users/{id}",
+        "/admin/order/{id}"
+      ],
+      "delete": [ 
+        "/product/{id}",
+        "/discount/{id}",
+        "/news/{id}",
+        "/admin/order/{id}"
+      ],
+      "get": [
+        "/admins/users",
+        "/admins/users/{id}",
+        "/admins/address",
+        "/category/{id}",
+        "/category/",
+        "/admin/order",
+        "/admin/order/{id}",
+        "/product/",
+        "/product/{id}",
+        "/wallet",
+        "/news",
+        "/news/{id}",
+        "/aboutUs",
+        "/content/contactUs",
+        "/index",
+        "/sub_info"
+      ]
+    }
+  },
+  "global": {
+    "get": [
+      "/category/{id}",
+      "/category/",
+      "/product/",
+      "/product/{id}",
+      "/wallet",
+      "/news",
+      "/news/{id}",
+      "/aboutUs",
+      "/content/contactUs",
+      "/index",
+      "/sub_info"
+    ],
+    "post": ["/contactUs"]
+  }
+}
