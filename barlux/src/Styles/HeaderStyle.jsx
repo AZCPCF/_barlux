@@ -1,10 +1,10 @@
-import { MenuList, TextField } from "@mui/material";
+import { BottomNavigation, Button, MenuItem, MenuList, TextField } from "@mui/material";
 import styled from "styled-components";
 import json from "../links.json";
 export const Logo = styled.img`
-  width: 75%;
+  width: 50%;
   height: 100%;
-  margin-right: 10px;
+  margin-right: 50px;
 `;
 export const ResponsiveMenu = styled.div`
   display: none;
@@ -18,9 +18,13 @@ export const StyledHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  @media (max-width: 1050px) {
+  box-shadow: 0 1px 5px -3px ${json.color};
+  @media (max-width: 1199px) {
     & > * {
       display: none;
+    }
+    & > .muirtl-hagxv6-MuiGrid-root{
+      width: 100%;
     }
     & > #responsiveMenu {
       width: 100%;
@@ -28,12 +32,12 @@ export const StyledHeader = styled.div`
       flex-direction: row;
       justify-content: space-evenly;
       align-items: center;
-
     }
   }
 `;
-export const Navbar = styled(MenuList)`
+export const Navbar = styled(BottomNavigation)`
   display: flex;
+  text-align:center;
   height: 75%;
 `;
 export const SearchInput = styled(TextField)`
@@ -44,23 +48,30 @@ export const HeaderButtons = styled.div`
   justify-content: space-evenly;
   align-items: center;
 `;
-export const CartButtonHeader = styled.div`
-  width: 20%;
+export const CartButtonHeader = styled(Button)`
+  width: 50px;
   height: 50px;
-  border-radius: 8px;
+  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${json.color};
   color: white;
+  border: 10px solid red;
+
 `;
-export const SignUpButtonHeader = styled.div`
+export const SignUpButtonHeader = styled(Button)`
   width: 35%;
   height: 50px;
   border-radius: 8px;
   display: flex;
+  font-size: 54px ;
   justify-content: space-evenly;
   align-items: center;
   border: 1px solid ${json.color};
   color: ${json.color};
+  @media (max-width: 1180px) {
+    &>span{
+      font-size: 11px;
+    }
+  }
 `;

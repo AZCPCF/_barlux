@@ -4,4 +4,12 @@
 }
 *{
   font-family: IranSans;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.MuiBottomNavigation-root{
+  color:#4dc488;
+  background-color:#4dc488;
 }

@@ -2,9 +2,9 @@ import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { prefixer } from "stylis";
 import rtlPlugin from "stylis-plugin-rtl";
-import { TokenProvider } from "../Hooks/ToastContext";
-import { ThemeProvider } from "styled-components";
-import Theme from "../Style/Theme";
+import { TokenProvider } from "../Components/TokenContext";
+import Theme from "../Styles/Theme";
+import { ThemeProvider } from "@mui/material";
 
 const cacheRtl = createCache({
   key: "muirtl",

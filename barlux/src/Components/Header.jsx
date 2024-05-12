@@ -1,15 +1,16 @@
-import { Grid, InputAdornment, MenuItem } from "@mui/material";
+import { Grid, InputAdornment, BottomNavigationAction } from "@mui/material";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
-import MenuIcon from "@mui/icons-material/Menu";
 import json from "../links.json";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import ContactMailOutlinedIcon from "@mui/icons-material/ContactMailOutlined";
+import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 import React, { useState } from "react";
 import {
   CartButtonHeader,
   HeaderButtons,
   Logo,
-  MenuHeader,
   Navbar,
   ResponsiveMenu,
   SearchInput,
@@ -17,26 +18,49 @@ import {
   StyledHeader,
 } from "../Styles/HeaderStyle";
 import HeaderMenu from "./HeaderMenu";
-import Banner from "./Banner";
-// location.href = '?page=$id'
+import { useNavigate } from "react-router-dom";
 export default function Header() {
-  // const [value, setValue] = useState("");
+  const [value, setValue] = React.useState("recents");
+  const navigate = useNavigate();
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    navigate(`/${newValue}`);
+  };
   return (
     <div>
       <Grid container spacing={0}>
-        <Grid item xs={12} md={12}>
+        <Grid item xl={12} md={12} sm={12}>
           <StyledHeader>
-            <Grid xs={2}>
-              <Logo src={json.logo} />
+            <Grid xl={2} md={2}>
+              <Logo
+                src={json.logo}
+                value={"/"}
+                onClick={() => {
+                  navigate("/");
+                  setValue(null);
+                }}
+              />
             </Grid>
-            <Grid xs={4}>
-              <Navbar>
-                <MenuItem>محصولات</MenuItem>
-                <MenuItem>درباره ما</MenuItem>
-                <MenuItem>تماس با ما</MenuItem>
+            <Grid xl={3}>
+              <Navbar onChange={handleChange} value={value}>
+                <BottomNavigationAction
+                  label="محصولات"
+                  value="products"
+                  icon={<ShoppingCartOutlinedIcon />}
+                />
+                <BottomNavigationAction
+                  label="ارتباط با ما"
+                  value="contactus"
+                  icon={<ContactMailOutlinedIcon />}
+                />
+                <BottomNavigationAction
+                  label="درباره ما"
+                  value="aboutus"
+                  icon={<GroupsOutlinedIcon />}
+                />
               </Navbar>
             </Grid>
-            <Grid xs={4}>
+            <Grid xl={4} md={4}>
               <SearchInput
                 variant="outlined"
                 placeholder="جستجو کنید..."
@@ -49,40 +73,37 @@ export default function Header() {
                 }}
               />
             </Grid>
-            <Grid xs={3}>
+            <Grid xl={3} md={4}>
               <HeaderButtons>
-                <CartButtonHeader>
-                  <ShoppingBasketIcon />
+                <CartButtonHeader variant="contained">
+                  <ShoppingBasketIcon sx={{ color: "#fff" }} />
                 </CartButtonHeader>
-                <SignUpButtonHeader>
+                <SignUpButtonHeader variant="outlined">
                   <PersonIcon />
-                  ثبت نام
+                  <span>ثبت نام</span>
                 </SignUpButtonHeader>
-
-                {/* <Button sx={{width:'20px',height:'50px',bgcolor:'#4DC488',color:'white'}}>s</Button> */}
               </HeaderButtons>
             </Grid>
-            <ResponsiveMenu id="responsiveMenu">
-              <HeaderMenu />
-              <Logo src={json.logo} style={{ width: "30%",height:'100%' }} />
-              <CartButtonHeader style={{ width: "10%" }}>
-                <ShoppingBasketIcon />
-              </CartButtonHeader>
-            </ResponsiveMenu>
+              <ResponsiveMenu id="responsiveMenu">
+                <HeaderMenu valuee={value} />
+                <Logo
+                  src={json.logo}
+                  onClick={() => {
+                    navigate("/");
+                    setValue(null);
+                  }}
+                  style={{ width: "20%", margin: "0", height: "100%" }}
+                />
+                <CartButtonHeader
+                  variant="contained"
+                  sx={{ width: "50px", height: "50px" }}
+                >
+                  <ShoppingBasketIcon sx={{ color: "#fff" }} />
+                </CartButtonHeader>
+              </ResponsiveMenu>
           </StyledHeader>
         </Grid>
       </Grid>
-      <Banner/>
     </div>
-
   );
 }
-// import React from 'react'
-
-// export default function Header() {
-//   return (
-//     <div>
-
-//     </div>
-//   )
-// }

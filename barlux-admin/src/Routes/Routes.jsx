@@ -28,7 +28,7 @@ export default function AppRoutes() {
   const [tokenn, setTokenn] = useState(token);
   useEffect(() => {
     // getf();
-    setTokenn(token);
+    setTokenn(token1);
   }, [token]);
   return (
     <BrowserRouter>

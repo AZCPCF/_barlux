@@ -4,7 +4,6 @@ import Theme from "./Style/Theme";
 import "./App.css";
 import AppRoutes from "./Routes/Routes";
 import { TokenProvider } from "./Hooks/ToastContext";
-import Modal from "./Components/Modal";
 import ToastifyCM from "./Components/ToastifyCM";
 export default function App() {
   return (
