@@ -1,5 +1,5 @@
 import { Grid, MenuItem, Typography } from "@mui/material";
-import json from "../links.json";
+import json from "../../JSON/variables.json";
 import styled from "styled-components";
 export const LogoFooter = styled.img`
   width: 100px;
@@ -25,9 +25,7 @@ export const LinksDiv = styled.div`
   }
 `;
 export const FooterMenuItem = styled(MenuItem)`
-  width: 75%;
-  margin-top: 15px;
-  margin-right: 200px;
+  width: max-content;
 `;
 export const FooterMenuTitle = styled.span`
   border-bottom: 1px solid ${json.color};

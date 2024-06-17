@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 import {
   ContactFooter,
@@ -7,10 +7,10 @@ import {
   FooterMenuTitle,
   LinksDiv,
   LogoFooter,
-} from "../Styles/FooterStyle";
+} from "../../Styles/FooterStyle";
 import MenuList from "@mui/material/MenuList";
-import { Logo } from "../Styles/HeaderStyle";
-import json from "../links.json";
+import { Logo } from "../../Styles/HeaderStyle";
+import json from "../../JSON/variables.json";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import XIcon from "@mui/icons-material/X";
@@ -19,8 +19,14 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import GoogleMap from "./GoogleMap";
+import { useLocation, useParams } from "react-router-dom";
+import { useTheme } from "@emotion/react";
 
 const Footer = () => {
+  const isContactUs = useLocation().pathname.split('/')[1] == 'contactus' ? true : false
+  const lg = useMediaQuery(useTheme().breakpoints.down('lg'))
+  console.log(lg);
+  console.log(isContactUs);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -28,11 +34,12 @@ const Footer = () => {
         direction="row"
         justifyContent="center"
         alignItems="center"
-        spacing={{ xl: -2, lg: 0, xs: -1 }}
+        mt={lg && isContactUs ? '800px' : '0'}
+        spacing={{ xl: -2, lg: -2, xs: -1 }}
         sx={{ borderTop: "2px solid #EAEAEA" }}
       >
         <Grid
-          xl={4}
+          xl={3}
           lg={3}
           xs={12}
           container
@@ -53,44 +60,47 @@ const Footer = () => {
           </LinksDiv>
         </Grid>
         <Grid
-          xl={2}
-          lg={2}
-          xs={6}
           container
-          direction={"column"}
-          justifyContent={"center"}
+          justifyContent={"space-evenly"}
           alignItems={"center"}
+          xl={4}
+          lg={4}
+          xs={12}
         >
-          <Typography variant="h5" color={json.color}>
-            <FooterMenuTitle>میانبر</FooterMenuTitle>
-          </Typography>
-          <MenuList>
-            <FooterMenuItem>صفحه اصلی</FooterMenuItem>
-            <FooterMenuItem>درباره ما</FooterMenuItem>
-            <FooterMenuItem>تماس با ما</FooterMenuItem>
-            <FooterMenuItem>تماس با ما</FooterMenuItem>
-            <FooterMenuItem>قوانین و مقررات</FooterMenuItem>
-          </MenuList>
-        </Grid>
-        <Grid
-          xl={2}
-          lg={2}
-          xs={6}
-          container
-          direction={"column"}
-          justifyContent={"center"}
-          alignItems={"center"}
-        >
-          <Typography variant="h5" color={json.color}>
-            <FooterMenuTitle>میانبر</FooterMenuTitle>
-          </Typography>
-          <MenuList sx={{marginLeft:'35px'}}>
-            <FooterMenuItem>صفحه اصلی</FooterMenuItem>
-            <FooterMenuItem>درباره ما</FooterMenuItem>
-            <FooterMenuItem>تماس با ما</FooterMenuItem>
-            <FooterMenuItem>تماس با ما</FooterMenuItem>
-            <FooterMenuItem>قوانین و مقررات</FooterMenuItem>
-          </MenuList>
+          <Grid
+            xl={2}
+            lg={2}
+            xs={6}
+            container
+            direction={"column"}
+            // justifyContent={"center"}
+            alignItems={"center"}
+          >
+            <Typography variant="h5" color={json.color}></Typography>
+            <MenuList>
+              <FooterMenuItem>صفحه اصلی</FooterMenuItem>
+              <FooterMenuItem>درباره ما</FooterMenuItem>
+              <FooterMenuItem>تماس با ما</FooterMenuItem>
+              <FooterMenuItem>قوانین و مقررات</FooterMenuItem>
+            </MenuList>
+          </Grid>
+          <Grid
+            xl={2}
+            lg={2}
+            xs={6}
+            container
+            direction={"column"}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
+            <Typography variant="h5" color={json.color}></Typography>
+            <MenuList sx={{ marginLeft: "35px" }}>
+              <FooterMenuItem>صفحه اصلی</FooterMenuItem>
+              <FooterMenuItem>درباره ما</FooterMenuItem>
+              <FooterMenuItem>تماس با ما</FooterMenuItem>
+              <FooterMenuItem>قوانین و مقررات</FooterMenuItem>
+            </MenuList>
+          </Grid>
         </Grid>
         <Grid
           xl={4}

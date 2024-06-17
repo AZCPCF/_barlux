@@ -1,12 +1,12 @@
-import { BottomNavigation, Button, MenuItem, MenuList, TextField } from "@mui/material";
+import { BottomNavigation, Button, Grid, MenuItem, MenuList, TextField } from "@mui/material";
 import styled from "styled-components";
-import json from "../links.json";
+import json from "../../JSON/variables.json";
 export const Logo = styled.img`
   width: 50%;
   height: 100%;
   margin-right: 50px;
 `;
-export const ResponsiveMenu = styled.div`
+export const ResponsiveMenu = styled(Grid)`
   display: none;
 `;
 export const MenuHeader = styled.div` 
@@ -20,6 +20,9 @@ export const StyledHeader = styled.div`
   justify-content: space-evenly;
   box-shadow: 0 1px 5px -3px ${json.color};
   @media (max-width: 1199px) {
+    &{
+      box-shadow: unset;
+    }
     & > * {
       display: none;
     }

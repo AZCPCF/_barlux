@@ -11,7 +11,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Navbar } from "../Styles/HeaderStyle";
+import { Navbar } from "../../Styles/HeaderStyle";
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ContactMailOutlinedIcon from "@mui/icons-material/ContactMailOutlined";
